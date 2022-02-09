@@ -146,18 +146,21 @@ void processCommand(char* input) {
             // Is the token following the >, <,  or >> even there?
             if (tokens[i+1] != NULL) {
                 // Set the relevant variable
-                if (!strcmp(tokens[i], "<"))
+                if (!strcmp(tokens[i], "<")) {
                     redirections[0] = tokens[i+1];
-                else if (!strcmp(tokens[i], ">"))
+                } else if (!strcmp(tokens[i], ">")) {
                     redirections[1] = tokens[i+1];
-                else
+                } else {
                     redirections[2] = tokens[i+1];
+                }
 
                 // Remove i and i+1 from tokens[]
                 for (int j = i+2; j < num_tokens; j++)
                     tokens[j-2] = tokens[j];
                 // Decrease num_tokens by 2
                 num_tokens -= 2;
+                // Decrement i to prevent skipping tokens
+                i--;
             }
         }
     }
