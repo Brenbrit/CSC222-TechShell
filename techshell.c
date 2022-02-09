@@ -217,7 +217,8 @@ void processCommand(char* input) {
 
         // Close input and output files
         for (int i  = 0; i < 3; i++)
-            fclose(redirection_files[i]);
+            if (redirections[i] != NULL)
+                fclose(redirection_files[i]);
 
         // Write the error code of execvp to the pipe[1].
         // This will not happen if execvp runs correctly.
