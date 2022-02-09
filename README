@@ -9,18 +9,18 @@ TechShell: W22 CSC 222-003 Programming Assignment 3
 Group members: Brendan Guillory, David Olivier
 
 How it works:
-		When the user runs the shell, a function named updateCWD() finds and updates the current working directory. Next, the main loop starts. This runs indefinitely until the user enters "exit".
-		During the main loop, the program writes the prompt which contains the current working directory followed by a $ and a space, then waits for user input. When user input is received, it is tokenized once by its spaces and is run trough a few filters:
+    When the user runs the shell, a function named updateCWD() finds and updates the current working directory. Next, the main loop starts. This runs indefinitely until the user enters "exit".
+    During the main loop, the program writes the prompt which contains the current working directory followed by a $ and a space, then waits for user input. When user input is received, it is tokenized once by its spaces and is run trough a few filters:
 
-				1. Is the input a blank line? If so, do nothing.
-				2. Is the input "exit"? If so, exit the program.
-				3. Is the input "cd"? If so, call chdir() to the following argument and then call updateCWD().
-				4. Is the input "pwd"? If so, write the current working directory to the console followed by a newline, then wait for another command.
+        1. Is the input a blank line? If so, do nothing.
+        2. Is the input "exit"? If so, exit the program.
+        3. Is the input "cd"? If so, call chdir() to the following argument and then call updateCWD().
+        4. Is the input "pwd"? If so, write the current working directory to the console followed by a newline, then wait for another command.
 
-		If none of the above conditions are met, then the rest of the user input is tokenized. Next, each token is scanned to check if it is a <, >, or >>. If that is the case and there is another token following that one, then the following token is set to the ouput file, input file, or error file respectively.
-		Next, error handling is set up. This is done with pipe() and fcntl(). pipe() estabilshes a pipe that the future child process can use to relay information back to the parent. This takes the shape of the array pipefds[2], which holds nothing in the first index and the return value of the user-input command in the second index. In addition, fcntl() is used to open up the socket between the two processes. After error handling has been set in place, the process forks.
-		The child process applies stdio redirection if specified by the user (<, >, or >> from earlier). Next, 0 is written to pipefds[0], execvp() is called with the tokenized input from earlier, input redirection is closed, the value of errno is written to pipefds[1], and the child exits.
-		The parent process waits for the child to exit. Once that happens, the parent either does nothing or prints out the error message from the child's execvp() call. Finally, the program loops back around to the beginning of the main loop.
+    If none of the above conditions are met, then the rest of the user input is tokenized. Next, each token is scanned to check if it is a <, >, or >>. If that is the case and there is another token following that one, then the following token is set to the ouput file, input file, or error file respectively.
+    Next, error handling is set up. This is done with pipe() and fcntl(). pipe() estabilshes a pipe that the future child process can use to relay information back to the parent. This takes the shape of the array pipefds[2], which holds nothing in the first index and the return value of the user-input command in the second index. In addition, fcntl() is used to open up the socket between the two processes. After error handling has been set in place, the process forks.
+    The child process applies stdio redirection if specified by the user (<, >, or >> from earlier). Next, 0 is written to pipefds[0], execvp() is called with the tokenized input from earlier, input redirection is closed, the value of errno is written to pipefds[1], and the child exits.
+    The parent process waits for the child to exit. Once that happens, the parent either does nothing or prints out the error message from the child's execvp() call. Finally, the program loops back around to the beginning of the main loop.
 
 How to use it:
-		Simply run "make". An executable named "techshell" will be generated, which can be run with ./techshell.
+    Simply run "make". An executable named "techshell" will be generated, which can be run with ./techshell.
