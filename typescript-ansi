@@ -1,0 +1,67 @@
+Script started on 2022-02-10 11:19:26-06:00 [TERM="st-256color" TTY="/dev/pts/0" COLUMNS="104" LINES="55"]
+[5 q[1m[7m%[27m[1m[0m                                                                                                        [0m[27m[24m[J[1m[31m[[33mbrendan[32m@[34mRachel [35m~d/CSC222-TechShell[31m][00m$[0m [K[5 q[5 q[?2004h[32mm[39m[1m[31mm[1m[31ma[0m[39m[1m[31mm[1m[31ma[1m[31mk[0m[39m[0m[32mm[0m[32ma[0m[32mk[32me[39m[?2004l
+[5 qmake: Nothing to be done for 'all'.
+[1m[7m%[27m[1m[0m                                                                                                        [0m[27m[24m[J[1m[31m[[33mbrendan[32m@[34mRachel [35m~d/CSC222-TechShell[31m][00m$[0m [K[5 q[5 q[?2004h[32m.[39m[4m[35m.[4m[35m/[24m[39m[24m[1m[31m.[24m[1m[31m/[1m[31mt[0m[39m[1m[31mt[1m[31me[0m[39m[1m[31me[1m[31mc[0m[39m[1m[31mc[1m[31mh[0m[39m[1m[31mh[1m[31ms[0m[39m[1m[31ms[1m[31mh[0m[39m[1m[31mh[1m[31me[0m[39m[1m[31me[1m[31ml[0m[39m[10D[0m[32m.[0m[32m/[0m[32mt[0m[32me[0m[32mc[0m[32mh[0m[32ms[0m[32mh[0m[32me[0m[32ml[32ml[39m[?2004l
+[5 q/home/brendan/Documents/CSC222-TechShell$ cd ../..
+/home/brendan$ pwd
+/home/brendan
+/home/brendan$ cd ..
+/home$ exit
+[1m[7m%[27m[1m[0m                                                                                                        [0m[27m[24m[J[1m[31m[[33mbrendan[32m@[34mRachel [35m~d/CSC222-TechShell[31m][00m$[0m [K[5 q[5 q[?2004h[32m./techshell[39m[?2004l
+[5 q/home/brendan/Documents/CSC222-TechShell$ cd ../..
+/home/brendan$ ls -lh preamble.txt
+-rw-r--r-- 1 brendan wheel 328 Feb  9 10:18 preamble.txt
+/home/brendan$ touch newfile.txt
+/home/brendan$ chmod 400 newfile.ts xt
+/home/brendan$ ls -lh newfile.txt
+-r-------- 1 brendan wheel 0 Feb 10 11:20 newfile.txt
+/home/brendan$ rm newfile.txt
+rm: remove write-protected regular empty file 'newfile.txt'? y
+/home/brendan$ c ls /root
+ls: cannot open directory '/root': Permission denied
+/home/brendan$ cd /root
+Error 13 (Permission denied)
+/home/brendan$ horsefafce
+Error 2 (No such file or directory)
+/home/brendan$ ps
+    PID TTY          TIME CMD
+  15790 pts/1    00:00:00 zsh
+  15880 pts/1    00:00:00 techshell
+  16116 pts/1    00:00:00 ps
+/home/brendan$ whereis ps
+ps: /usr/bin/ps /usr/share/man/man1/ps.1.gz
+/home/brendan$ ps u
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+brendan      551  0.0  0.0   7404  4020 tty1     Ss+  10:00   0:00 /bin/sh /usr/bin/startx
+brendan      585  0.0  0.0   3908  1120 tty1     S+   10:00   0:00 xinit /home/brendan/.xinitrc -- /etc/
+brendan      586  0.7  1.0 469088 82108 tty1     Sl   10:00   0:35 /usr/lib/Xorg -nolisten tcp :0 vt1 -k
+brendan      593  0.0  0.0   7400  3988 tty1     S    10:00   0:00 /bin/sh /home/brendan/.xinitrc
+brendan      597  0.0  0.0   5492  1528 tty1     S    10:00   0:01 unclutter
+brendan      600  0.0  0.1  25840 10300 tty1     S    10:00   0:00 dwm
+brendan      677  0.0  0.1 243080 10140 tty1     Sl   10:00   0:00 dunst
+brendan      690  0.0  0.0   3900  2340 tty1     S    10:00   0:00 dwmblocks
+brendan    15717  0.1  0.3  34724 25740 pts/0    Ss   11:19   0:00 /usr/bin/python -O /usr/bin/ranger
+brendan    15769  0.0  0.0  11548  7368 pts/0    S    11:19   0:00 /bin/zsh
+brendan    15789  0.0  0.0   5392   892 pts/0    R+   11:19   0:00 script
+brendan    15790  0.1  0.0  11548  7372 pts/1    Ss   11:19   0:00 zsh -i
+brendan    15880  0.0  0.0   2364  1432 pts/1    S+   11:19   0:00 ./techshell
+brendan    16146  0.0  0.0  10108  3528 pts/1    R+   11:21   0:00 ps u
+/home/brendan$ ls
+Documents  Downloads  komi.txt	OneDrive  Pictures  preamble.txt
+/home/brendan$ wc re  preamble.txt > p.out
+/home/brendan$ wc -l < p.out
+1
+/home/brendan$ cat p.out
+  1  52 328 preamble.txt
+/home/brendan$ wc -l < p.out >p2.    p2.out
+/home/brendan$ cat p2.out
+1
+/home/brendan$ rm p.out p2.out
+/home/brendan$ ls /root >> error.txt
+/home/brendan$ cat error.txt
+ls: cannot open directory '/root': Permission denied
+/home/brendan$ rm error.txt
+/home/brendan$ exit
+[1m[7m%[27m[1m[0m                                                                                                        [0m[27m[24m[J[1m[31m[[33mbrendan[32m@[34mRachel [35m~d/CSC222-TechShell[31m][00m$[0m [K[5 q[5 q[?2004h[32me[39m[1m[31me[1m[31mx[0m[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[?2004l
+[5 q
+Script done on 2022-02-10 11:23:20-06:00 [COMMAND_EXIT_CODE="0"]
