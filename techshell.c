@@ -107,6 +107,11 @@ void processCommand(char* input) {
     // modifies the original string.
     char* pointer = strtok(input, DELIM);
 
+    // Did the user type a space (or a bunch of spaces)?
+    // If so, just exit.
+    if (pointer == NULL)
+        return;
+
     // The tokens are stored in tokens[]. The first token is, of course,
     // stored in tokens[0].
     char* tokens[TOKEN_LIMIT];
