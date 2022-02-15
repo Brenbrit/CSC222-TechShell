@@ -49,12 +49,12 @@ brendan    15880  0.0  0.0   2364  1432 pts/1    S+   11:19   0:00 ./techshell
 brendan    16146  0.0  0.0  10108  3528 pts/1    R+   11:21   0:00 ps u
 /home/brendan$ ls
 Documents  Downloads  komi.txt	OneDrive  Pictures  preamble.txt
-/home/brendan$ wc rpreamble.txt > p.out
+/home/brendan$ wc preamble.txt > p.out
 /home/brendan$ wc -l < p.out
 1
 /home/brendan$ cat p.out
   1  52 328 preamble.txt
-/home/brendan$ wc -l < p.out >p2 p2.out
+/home/brendan$ wc -l < p.out > p2.out
 /home/brendan$ cat p2.out
 1
 /home/brendan$ rm p.out p2.out
