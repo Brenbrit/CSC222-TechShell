@@ -12,7 +12,7 @@ How it works:
     When the user runs the shell, a function named updateCWD() finds and updates the current working directory. Next, the main loop starts. This runs indefinitely until the user enters "exit".
     During the main loop, the program writes the prompt which contains the current working directory followed by a $ and a space, then waits for user input. When user input is received, it is tokenized once by its spaces and is run trough a few filters:
 
-        1. Is the input a blank line? If so, do nothing.
+        1. Is the input a blank line or is the input's first character a space? If so, do nothing.
         2. Is the input "exit"? If so, exit the program.
         3. Is the input "cd"? If so, call chdir() to the following argument and then call updateCWD().
         4. Is the input "pwd"? If so, write the current working directory to the console followed by a newline, then wait for another command.
