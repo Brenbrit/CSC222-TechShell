@@ -57,7 +57,7 @@ Documents  Downloads  komi.txt	OneDrive  Pictures  preamble.txt
 /home/brendan$ cat p2.out
 1
 /home/brendan$ rm p.out p2.out
-/home/brendan$ ls /root >> error.txt
+/home/brendan$ ls /root 2> error.txt
 /home/brendan$ cat error.txt
 ls: cannot open directory '/root': Permission denied
 /home/brendan$ rm error.txt
