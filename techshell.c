@@ -143,12 +143,12 @@ void processCommand(char* input) {
     // Scan through each token
     for (int i = 0; tokens[i] != NULL; i++) {
 
-        // If we found >, <, or >>
+        // If we found >, <, or 2>
         if (!strcmp(tokens[i], "<")
                 || !strcmp(tokens[i], ">")
-                || !strcmp(tokens[i], ">>")) {
+                || !strcmp(tokens[i], "2>")) {
 
-            // Is the token following the >, <,  or >> even there?
+            // Is the token following the >, <,  or 2> even there?
             if (tokens[i+1] != NULL) {
                 // Set the relevant variable
                 if (!strcmp(tokens[i], "<")) {
