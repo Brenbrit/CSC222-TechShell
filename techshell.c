@@ -12,13 +12,19 @@
    A shell. Supports input, output, and error redirection.
    */
 
+// For reading errors
 #include <errno.h>
+// For using sockets between child and parent processes
 #include <fcntl.h>
+// For standard io
 #include <stdio.h>
+// General library with lots of useful functions
 #include <stdlib.h>
+// For string computations
 #include <string.h>
+// For one function: wait().
 #include <sys/wait.h>
-#include <sysexits.h>
+// Has functions for reading CWD and reading/writing with pipes
 #include <unistd.h>
 
 #define INPUT_SIZE_LIMIT 256
@@ -175,12 +181,10 @@ void processCommand(char* input) {
     int count, error;
     // pipe(pipefds) is used to communicate from the child to the parent.
     if (pipe(pipefds)) {
-        perror("pipe");
         fprintf(stderr, "Error making error-handling pipe\n");
     }
     // fcntl is used to open the socket between the child and parent.
     if (fcntl(pipefds[1], F_SETFD, fcntl(pipefds[1], F_GETFD) | FD_CLOEXEC)) {
-        perror("fcntl");
         fprintf(stderr, "Error using fcntl\n");
     }
 
@@ -199,7 +203,6 @@ void processCommand(char* input) {
         }
 
         wait(NULL);
-
 
         return;
     } else {
@@ -234,9 +237,8 @@ void processCommand(char* input) {
         // of data to write.
         write(pipefds[1], &errno, sizeof(int));
 
-        // We use _exit() instead of exit() so that the pipe's resources
-        // won't be cleared.
-        _exit(0);
+        // We are done! Exit the child process.
+        exit(0);
     }
 }
 
