@@ -67,6 +67,14 @@ int builtInCommands(char* command) {
         // after the cd. This is the folder we want to change to.
         char* new_dir = strtok(NULL, "");
 
+        // Did the user use a ~? If so, replace it with $HOME.
+        if (new_dir[0] == '~') {
+            char* dir_with_home = getenv("HOME");
+            new_dir++;
+            strcat(dir_with_home, new_dir);
+            new_dir = dir_with_home;
+        }
+
         // Try to change directories with chdir
         int cd_status = chdir(new_dir);
 
