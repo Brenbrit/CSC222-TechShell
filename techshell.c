@@ -35,6 +35,32 @@
 // Global cwd char array
 char cwd[CWD_SIZE_LIMIT];
 
+// Function declarations
+void updateCWD();
+char* getUserInput();
+void processCommand(char* input);
+int builtInCommands(char* command);
+
+// Main function
+// Calls other functions and runs until "exit" is entered
+int main() {
+
+    // Update CWD to the initial value
+    updateCWD();
+
+    // Main loop
+    while (1) {
+        // Echo pwd to user, followed by "$ "
+        printf("%s$ ", cwd);
+
+        // Get user input
+        char* input = getUserInput();
+
+        // Process command
+        processCommand(input);
+    }
+}
+
 // Helper function to update the global cwd variable.
 // Called at the beginning and after every cd.
 void updateCWD() {
@@ -56,51 +82,6 @@ char* getUserInput() {
 
     return input;
 }
-
-// Checks if we are running a built-in command.
-// If we are, do it and return 0.
-// Else, return 1
-int builtInCommands(char* command) {
-
-    if (!strcmp(command, "cd")) {
-        // strtok(NULL, "") will return a char* to the second token,
-        // after the cd. This is the folder we want to change to.
-        char* new_dir = strtok(NULL, "");
-
-        // Did the user use a ~? If so, replace it with $HOME.
-        if (new_dir[0] == '~') {
-            char* dir_with_home = getenv("HOME");
-            new_dir++;
-            strcat(dir_with_home, new_dir);
-            new_dir = dir_with_home;
-        }
-
-        // Try to change directories with chdir
-        int cd_status = chdir(new_dir);
-
-        // Did chdir() actually do anything? Let's check!
-        if (cd_status == 0) {
-            // Success!
-            // Update the global cwd variable
-            updateCWD();
-            return 0;
-        } else {
-            // chdir() failed. Tell the user why.
-            fprintf(stderr, "Error %d (%s)\n", errno, strerror(errno));
-            return 0;
-        }
-    } else if (!strcmp(command, "pwd")) {
-        // Print pwd and return.
-        printf("%s\n", cwd);
-        return 0;
-    } else if (!strcmp(command, "exit")) {
-        // Simply exit.
-        exit(0);
-    }
-
-    return 1;
-}
-
 
 void processCommand(char* input) {
 
@@ -250,23 +231,46 @@ void processCommand(char* input) {
     }
 }
 
+// Checks if we are running a built-in command.
+// If we are, do it and return 0.
+// Else, return 1
+int builtInCommands(char* command) {
 
-// Main function
-// Calls other functions and runs until "exit" is entered
-int main() {
+    if (!strcmp(command, "cd")) {
+        // strtok(NULL, "") will return a char* to the second token,
+        // after the cd. This is the folder we want to change to.
+        char* new_dir = strtok(NULL, "");
 
-    // Update CWD to the initial value
-    updateCWD();
+        // Did the user use a ~? If so, replace it with $HOME.
+        if (new_dir[0] == '~') {
+            char* dir_with_home = getenv("HOME");
+            new_dir++;
+            strcat(dir_with_home, new_dir);
+            new_dir = dir_with_home;
+        }
 
-    // Main loop
-    while (1) {
-        // Echo pwd to user, followed by "$ "
-        printf("%s$ ", cwd);
+        // Try to change directories with chdir
+        int cd_status = chdir(new_dir);
 
-        // Get user input
-        char* input = getUserInput();
-
-        // Process command
-        processCommand(input);
+        // Did chdir() actually do anything? Let's check!
+        if (cd_status == 0) {
+            // Success!
+            // Update the global cwd variable
+            updateCWD();
+            return 0;
+        } else {
+            // chdir() failed. Tell the user why.
+            fprintf(stderr, "Error %d (%s)\n", errno, strerror(errno));
+            return 0;
+        }
+    } else if (!strcmp(command, "pwd")) {
+        // Print pwd and return.
+        printf("%s\n", cwd);
+        return 0;
+    } else if (!strcmp(command, "exit")) {
+        // Simply exit.
+        exit(0);
     }
+
+    return 1;
 }
